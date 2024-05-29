@@ -1,4 +1,4 @@
-#!/usr/bin/env foremb
+#!/usr/bin/env emos
 
 2 base
 "ASCII:   " $. $free

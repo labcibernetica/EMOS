@@ -1,3 +1,3 @@
-#!/usr/bin/env foremb
+#!/usr/bin/env emos
 
 "Hello world!!!" $.
