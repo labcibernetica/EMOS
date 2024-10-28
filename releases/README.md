@@ -2,4 +2,6 @@
 
 * Debian.
 
+* macOS.
+
 * Raspberry Pico.
