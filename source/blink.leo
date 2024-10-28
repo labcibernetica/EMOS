@@ -17,4 +17,4 @@ end
 25 pin:out
 "done\n" $. $free
 
-8 s0
+8 s01
