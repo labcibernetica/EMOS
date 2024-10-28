@@ -1,4 +1,4 @@
-# Embeded Meta-language Operating System
+# Embeded Metalanguage Operating System
 
 Real-time operating system for embeded devices.
 
