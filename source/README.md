@@ -4,6 +4,6 @@
 
 emos hello.leo
 
-* ascii.leo: zone and digits split from ASCII.
+* ascii.leo: Zone and digits split from ASCII.
 * blink.leo: Raspberry Pico blink.
 * hello.leo: Hello world script.

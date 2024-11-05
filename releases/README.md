@@ -4,3 +4,7 @@
 * FreeBSD.
 * macOS.
 * Raspberry Pico.
+
+   The connection with Raspberry Pico is done using the command:
+
+emos -serial /dev/ttyACM0
