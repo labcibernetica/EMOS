@@ -1,6 +1,7 @@
 #!/usr/bin/env emos
 
-2000000h constant pins
+#select all GPIO PINs
+3f7fffffh constant pins
 
 : s01
  loop
