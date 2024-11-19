@@ -18,7 +18,7 @@
  drop
 end
 
-" - Setting up PICO..." $. $free
+" - Setting up blink..." $. $free
 #25 pin:out
 pins pins:out
 "done\n" $. $free
