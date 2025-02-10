@@ -7,10 +7,8 @@
  loop
   {
    while dup ;
-   #25 1 pin!
    pins pins pins!
    500 pause/ms
-   #25 0 pin!
    pins 0 pins!
    500 pause/ms
    --
@@ -19,7 +17,6 @@
 end
 
 " - Setting up blink..." $. $free
-#25 pin:out
 pins pins:out
 "done\n" $. $free
 
