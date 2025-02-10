@@ -5,6 +5,6 @@
 * macOS.
 * Raspberry Pico: RP2040 and RP2350.
 
-   The connection with Raspberry Pico is done by using the command:
+   The connection with Raspberry Pico is done by using the following command:
 
 emos -serial /dev/ttyACM0
