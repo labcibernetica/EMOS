@@ -1,9 +1,9 @@
 #!/usr/bin/env emos
 
 2 base
-"ASCII:   " $. $free
+"ASCII:   " $. free
 '+' dup . '\n' emit
-"digits: " $. $free
+"digits: " $. free
 dup 0fh and . '\n' emit
-"zone:    " $. $free
+"zone:    " $. free
 4 >> . '\n' emit

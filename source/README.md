@@ -8,4 +8,4 @@ emos hello.leo
 * blink.leo: Raspberry Pico blink.
 * getbit.leo: Reads one bit from Raspberry Pico.
 * hello.leo: Hello world script.
-* Pointer Stack: pointer_stack.leo
+* Pointer Stack: Shows pointer stack content.

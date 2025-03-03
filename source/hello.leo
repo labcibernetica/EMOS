@@ -1,3 +1,3 @@
 #!/usr/bin/env emos
 
-"Hello world!!!" $.
+"Hello world!!!" $. free
