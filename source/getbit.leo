@@ -3,15 +3,15 @@
 #select GP1 PIN
 0 constant pin
 
-#configure PICO
-" - Setting up Getbit..." $. free
-pin pin:in
-"done\n" $. free
-
 #configure output
 2 base
 5 digits
 1 zeros
+
+#configure PICO
+" - Setting up Getbit..." $. free
+pin pin:in
+"done\n" $. free
 
 #read 8 bits
 loop 8
