@@ -4,15 +4,13 @@ Real-time operating system for embeded devices.
 
 ## Arithmetic Operations for Integers/Symbols
 
-| Word | Description                   |
-| ---- | ----------------------------- |
-| +    | DS ( c2 c1 -- c3 ) c3 = c1+c2 |
-| --   | DS ( c1 -- c2 )    c2 = c1-1  |
-| /    | DS ( c2 c1 -- c3 ) c3 = c2/c1 |
-| ++   | DS ( c1 -- c2 )    c2 = c1+1  |
-| %    | DS ( c2 c1 -- c3 ) c3 = c2%c1 |
-| *    | DS ( c2 c1 -- c3 ) c3 = c1*c2 |
-| -    | DS ( c2 c1 -- c3 ) c3 = c2-c1 |
+| Word | Description                       |
+| ---- | --------------------------------- |
+| +    | DS ( c2 c1 -- c3 ) c3 = c1+c2     |
+| /    | DS ( c2 c1 -- c3 ) c3 = c2/c1     |
+| //   | DS ( c2 c1 -- c3 ) c3 = c2 mod c1 |
+| *    | DS ( c2 c1 -- c3 ) c3 = c1*c2     |
+| -    | DS ( c2 c1 -- c3 ) c3 = c2-c1     |
 
 ## Arithmetic Operations for Reals
 
@@ -25,10 +23,10 @@ Real-time operating system for embeded devices.
 
 ## Arithmetic Operations for Signed Integers
 
-| Word | Description                   |
-| ---- | ----------------------------- |
-| s/   | DS ( c2 c1 -- c3 ) c3 = c2/c1 |
-| s%   | DS ( c2 c1 -- c3 ) c3 = c2%c1 |
+| Word | Description                       |
+| ---- | --------------------------------- |
+| s/   | DS ( c2 c1 -- c3 ) c3 = c2/c1     |
+| s//  | DS ( c2 c1 -- c3 ) c3 = c2 mod c1 |
 
 ## Comparison for Integers and Symbols
 
@@ -61,21 +59,10 @@ Real-time operating system for embeded devices.
 | r>$  | FS ( c1 -- ) PS ( -- c1 ) |
 | s>r  | DS ( c1 -- ) FS ( -- c1 ) |
 | s>$  | DS ( c1 -- ) PS ( -- c1 ) |
-| $>s  | PS ( c1 -- ) DS ( -- c1 ) |
 | $>r  | PS ( c1 -- ) FS ( -- c1 ) |
+| $>s  | PS ( c1 -- ) DS ( -- c1 ) |
 | >r   | DS ( c1 -- ) FS ( -- c1 ) |
 | >$   | DS ( c1 -- ) PS ( -- c1 ) |
-
-## Core
-
-| Word    | Description                            |
-| ------- | -------------------------------------- |
-| call    | DS ( c1 -- ) PS ( c1 -- ) RS ( -- c1 ) |
-| clear   | ( cn ... c1 -- )                       |
-| exit    | ( cn ... c1 -- )                       |
-| nop     | ( -- )                                 |
-| restart | ( cn ... c1 -- )                       |
-| ; end   | Closes control flow structure.         |
 
 ## Data Stack
 
@@ -89,16 +76,15 @@ Real-time operating system for embeded devices.
 
 ## Dictionary
 
-| Word   | Description           |
-| ------ | --------------------- |
-| :      | Makes new word.       |
-| create | DS ( c1 -- )          |
-| does   | IS ( c1 -- )          |
-| forget | DS ( c1 -- )          |
-| hold   | DS ( c1 -- )          |
-| omit   | Omit word evaluation. |
-| return | RS ( c1 -- )          |
-| wait   | RS ( c1 -- c2 )       |
+| Word   | Description     |
+| ------ | --------------- |
+| :      | Makes new word. |
+| create | DS ( c1 -- )    |
+| does   | IS ( c1 -- )    |
+| forget | DS ( c1 -- )    |
+| hold   | DS ( c1 -- )    |
+| ,      | RS ( c1 -- c2 ) |
+| return | RS ( c1 -- )    |
 
 ## File System
 
@@ -123,12 +109,22 @@ Real-time operating system for embeded devices.
 | rroll  | FS ( cn cn-1 ... c1 -- cn-1 ... c1 cn ) |
 | trunc  | FS ( c1 -- ) DS ( -- c1 )               |
 
+## Kernel
+
+| Word    | Description                            |
+| ------- | -------------------------------------- |
+| call    | DS ( c1 -- ) PS ( c1 -- ) RS ( -- c1 ) |
+| clear   | ( cn ... c1 -- )                       |
+| exit    | ( cn ... c1 -- )                       |
+| nop     | ( -- )                                 |
+| restart | ( cn ... c1 -- )                       |
+| ; end   | Closes control flow structure.         |
+
 ## Logical Operations
 
 | Word | Description                       |
 | ---- | --------------------------------- |
 | and  | DS ( c2 c1 -- c3 ) c3 = c1 and c2 |
-| not  | DS ( c1 -- c2 )    c2 = not c1    |
 | or   | DS ( c2 c1 -- c3 ) c3 = c1 or c2  |
 | <<   | DS ( c2 c1 -- c3 ) c3 = c2 << c1  |
 | >>   | DS ( c2 c1 -- c3 ) c3 = c2 >> c1  |
@@ -141,24 +137,36 @@ Real-time operating system for embeded devices.
 | allocate | DS ( c2 c1 -- )                 |
 | b@       | PS ( c1 -- c1 c2 )              |
 | b!       | PS ( c2 c1 -- c1 )              |
+| blocks   | DS ( -- c1 )                    |
 | @        | PS ( c1 -- c1 ) DS ( -- c1 )    |
 | free     | PS ( c1 -- )                    |
+| integers | DS ( -- c1 )                    |
 | r@       | PS ( c1 -- ) FS ( -- c1 )       |
 | r!       | FS ( c1 -- ) PS ( c1 -- c1 )    |
+| reals    | DS ( -- c1 )                    |
 | shift    | DS ( c2 c1 -- ) PS ( c1 -- c2 ) |
 | !        | DS ( c1 -- ) PS ( c1 -- c1 )    |
 | c@       | PS ( c1 -- c1 ) DS ( -- c1 )    |
 | c!       | DS ( c1 -- ) PS ( c1 -- c1 )    |
+| symbols  | DS ( -- c1 )                    |
 | v!       | DS ( c1 -- ) PS ( c1 -- )       |
 
 ## Pointer Stack
 
-| Word      | Description                             |
-| --------- | --------------------------------------- |
-| pdrop     | PS ( c1 -- )                            |
-| ppick     | PS ( cn ... c1 -- cn ... c1 cn )        |
-| proll-    | PS ( cn ... c2 c1 -- cn c1 ... c2 )     |
-| proll     | PS ( cn cn-1 ... c1 -- cn-1 ... c1 cn ) |
+| Word   | Description                             |
+| ------ | --------------------------------------- |
+| pdrop  | PS ( c1 -- )                            |
+| ppick  | PS ( cn ... c1 -- cn ... c1 cn )        |
+| proll- | PS ( cn ... c2 c1 -- cn c1 ... c2 )     |
+| proll  | PS ( cn cn-1 ... c1 -- cn-1 ... c1 cn ) |
+
+## Tasks
+
+| Word       | Description  |
+| ---------- | ------------ |
+| task.mode  | DS ( c1 -- ) |
+| task.time  | DS ( c1 -- ) |
+| task.words | DS ( c1 -- ) |
 
 ## Control Flow
 
@@ -166,6 +174,7 @@ Real-time operating system for embeded devices.
 | ------------ | ---------------------- |
 | if elif else | if {} elif {} else {}  |
 | include      | Inserts external code. |
+| label        | Inserts label.         |
 | jmpnz        | DS ( c1 -- )           |
 | jmpz         | DS ( c1 -- )           |
 
@@ -173,9 +182,9 @@ Real-time operating system for embeded devices.
 
 | Word  | Description          |
 | ----- | -------------------- |
+| again | Goes to loop start.  |
 | break | Goes to loop end.    |
 | loop  | Start of the loop.   |
-| retry | Goes to loop start.  |
 | skip  | Goes to loop begin.  |
 | while | Test loop condition. |
 
@@ -183,6 +192,8 @@ Real-time operating system for embeded devices.
 
 | Word            | Description                    |
 | --------------- | ------------------------------ |
+| --              | DS ( c1 -- c2 )    c2 = c1-1   |
+| ++              | DS ( c1 -- c2 )    c2 = c1+1   |
 | cr              | Jumps to start of next line.   |
 | dup             | DS ( c1 -- c1 c1 )             |
 | nip             | DS ( c2 c1 -- c1 )             |
@@ -207,8 +218,7 @@ Real-time operating system for embeded devices.
 | .               | DS ( c1 -- )                   |
 | s.              | DS ( c1 -- )                   |
 | variable        | DS ( c2 c1 -- )                |
-| atoms           | PS ( c1 -- c1 ) DS ( -- c1 )   |
-| vector          | DS ( c2 c1 -- )                |
+| not             | DS ( c1 -- c2 ) c2 = not c1    |
 | pdup            | PS ( c1 -- c1 c1 )             |
 | pnip            | PS ( c2 c1 -- c1 )             |
 | pover           | PS ( c2 c1 -- c2 c1 c2 )       |
@@ -238,36 +248,29 @@ Real-time operating system for embeded devices.
 
 ## Hardware
 
-| Word            | Description        |
-| --------------- | ------------------ |
-| pin@            | DS ( c1 -- c2 )    |
-| pin:in          | DS ( c1 --    )    |
-| pin:out         | DS ( c1 --    )    |
-| pin!            | DS ( c2 c1 -- )    |
-| pins@           | DS ( c1 -- c2 )    |
-| pins:in         | DS ( c1 --    )    |
-| pins:out        | DS ( c1 --    )    |
-| pins!           | DS ( c2 c1 -- )    |
-| getch           | DS ( -- c1 )       |
-| timer@          | DS ( c1 -- c1 c2 ) |
-| timer!          | DS ( c1 -- c2 )    |
+| Word     | Description        |
+| -------- | ------------------ |
+| pin@     | DS ( c1 -- c2 )    |
+| pin:in   | DS ( c1 --    )    |
+| pin:out  | DS ( c1 --    )    |
+| pin!     | DS ( c2 c1 -- )    |
+| pins@    | DS ( c1 -- c2 )    |
+| pins:in  | DS ( c1 --    )    |
+| pins:out | DS ( c1 --    )    |
+| pins!    | DS ( c2 c1 -- )    |
+| getch    | DS ( -- c1 )       |
+| timer@   | DS ( c1 -- c1 c2 ) |
+| timer!   | DS ( c1 -- c2 )    |
 
 ## Registers
 
-| Word            | Description                 |
-| --------------- | --------------------------- |
-| base            | DS ( c1 -- )                |
-| blocks          | DS ( -- c1 )                |
-| decimals        | DS ( c1 -- )                |
-| digits          | DS ( c1 -- )                |
-| integers        | DS ( -- c1 )                |
-| reg.kernel      | DS ( -- c1 )                |
-| reg.platform    | DS ( -- c1 )                |
-| reals           | DS ( -- c1 )                |
-| symbols         | DS ( -- c1 )                |
-| reg.system      | DS ( -- c1 )                |
-| task.mode       | DS ( c1 -- )                |
-| task.time       | DS ( c1 -- )                |
-| task.words      | DS ( c1 -- )                |
-| reg.version     | PS ( -- c1 )                |
-| zeros           | DS ( c1 -- )                |
+| Word         | Description  |
+| ------------ | ------------ |
+| base         | DS ( c1 -- ) |
+| decimals     | DS ( c1 -- ) |
+| digits       | DS ( c1 -- ) |
+| reg.kernel   | DS ( -- c1 ) |
+| reg.platform | DS ( -- c1 ) |
+| reg.system   | DS ( -- c1 ) |
+| reg.version  | PS ( -- c1 ) |
+| zeros        | DS ( c1 -- ) |
