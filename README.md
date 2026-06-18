@@ -2,6 +2,10 @@
 
 Real-time operating system for embeded devices.
 
+## Integrated Metalanguage Environment (IME)
+
+![Alt text](figures/ime.png)
+
 ## Arithmetic Operations for Integers/Symbols
 
 | Word | Description                       |

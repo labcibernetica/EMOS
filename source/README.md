@@ -4,8 +4,9 @@
 
 emos hello.leo
 
-* ascii.leo: Zone and digits split from ASCII.
-* blink.leo: Raspberry Pico blink.
-* getbit.leo: Reads one bit from Raspberry Pico.
-* hello.leo: Hello world script.
-* Pointer Stack: Shows pointer stack content.
+ * ascii.leo: Zone and digits split from ASCII.
+ * blink.leo: Raspberry Pico blink.
+ * getbit.leo: Reads one bit from Raspberry Pico.
+ * hello.leo: Hello world script.
+ * Pointer Stack: Shows pointer stack content.
+ * UART: UART Tx-Rx test, with data saving on PC, use 'save test.dat' and 'hexadecimal' commands before execution.
